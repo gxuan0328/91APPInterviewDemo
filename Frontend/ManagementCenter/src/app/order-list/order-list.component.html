@@ -1,0 +1,64 @@
+<div class="container-fluid d-flex align-items-center justify-content-center">
+    <table mat-table [dataSource]="ELEMENT_DATA">
+        <!-- Position Column -->
+        <ng-container matColumnDef="Id">
+            <th mat-header-cell *matHeaderCellDef> 訂單編號 </th>
+            <mat-cell *matCellDef="let row"> {{row.Id}}
+                <a mat-menu-item class="item" routerLink="/order/detail/{{row.Id}}">
+                    查看訂單內容
+                </a>
+            </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="Buyer">
+            <th mat-header-cell *matHeaderCellDef> 購買人姓名 </th>
+            <td mat-cell *matCellDef="let row"> {{row.Buyer}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="PaymentType">
+            <th mat-header-cell *matHeaderCellDef> 付款方式 </th>
+            <td mat-cell *matCellDef="let row"> {{row.PaymentType}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="Total">
+            <th mat-header-cell *matHeaderCellDef> 訂單金額 </th>
+            <td mat-cell *matCellDef="let row"> {{row.Total}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="Address">
+            <th mat-header-cell *matHeaderCellDef> 寄送地址 </th>
+            <td mat-cell *matCellDef="let row"> {{row.Address}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="CreateTime">
+            <th mat-header-cell *matHeaderCellDef> 訂單成立時間 </th>
+            <td mat-cell *matCellDef="let row"> {{row.CreateTime | date: 'medium'}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="OrderStatusType">
+            <th mat-header-cell *matHeaderCellDef> 訂單狀態 </th>
+            <td mat-cell *matCellDef="let row"> {{row.OrderStatusType}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="Management">
+            <th mat-header-cell *matHeaderCellDef> 操作 </th>
+            <td mat-cell *matCellDef="let row">
+                <button *ngIf="row.OrderStatusType_Id===1 else clicked"  (click)="updateOrderStatus(row.Id)"> 出貨 </button>
+                <ng-template #clicked>
+                    <button disabled> 已出貨 </button>
+                </ng-template>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+</div>

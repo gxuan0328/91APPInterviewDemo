@@ -1,0 +1,27 @@
+.container-fluid {
+  height: calc(100vh - 128px);
+}
+a {
+  font-weight: bolder;
+  font-size: 28px;
+}
+mat-card {
+  background: #f3f3f3;
+  width: 400px;
+  padding: 50px;
+  text-align: center;
+}
+mat-card-header {
+  display: block;
+  margin-bottom: 20px;
+}
+mat-card-title {
+  font-weight: bolder;
+}
+mat-card-content {
+  margin-bottom: 0px;
+}
+mat-form-field {
+  width: 250px;
+  margin-bottom: 5px;
+}

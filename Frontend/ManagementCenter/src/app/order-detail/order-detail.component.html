@@ -1,0 +1,53 @@
+<div class="container-fluid">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>訂單編號: {{ELEMENT_DATA.Id}}</mat-card-title>
+            <mat-card-subtitle>買家姓名: {{ELEMENT_DATA.Buyer}}</mat-card-subtitle>
+            <mat-card-subtitle>賣家姓名: {{ELEMENT_DATA.Seller}}</mat-card-subtitle>
+            <mat-card-subtitle>寄送地址: {{ELEMENT_DATA.Address}}</mat-card-subtitle>
+            <mat-card-subtitle>付款方式: {{ELEMENT_DATA.PaymentType}}</mat-card-subtitle>
+            <mat-card-subtitle>訂單狀態: {{ELEMENT_DATA.OrderStatusType}}</mat-card-subtitle>
+            <mat-card-subtitle>訂單成立時間: {{ELEMENT_DATA.CreateTime | date: 'medium'}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <table mat-table [dataSource]="ELEMENT_DATA.Products">
+                <!-- Position Column -->
+                <!-- Name Column -->
+                <ng-container matColumnDef="Name">
+                    <th mat-header-cell *matHeaderCellDef> 商品名稱 </th>
+                    <td mat-cell *matCellDef="let row">
+                        <a mat-menu-item class="item" routerLink="/product/detail/{{row.Id}}">
+                            {{row.Name}}
+                        </a>
+                    </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="Price">
+                    <th mat-header-cell *matHeaderCellDef> 價格 </th>
+                    <td mat-cell *matCellDef="let row"> {{row.Price}} </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="Quantity">
+                    <th mat-header-cell *matHeaderCellDef> 數量 </th>
+                    <td mat-cell *matCellDef="let row"> {{row.Quantity}} </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="Total">
+                    <th mat-header-cell *matHeaderCellDef> 小計 </th>
+                    <td mat-cell *matCellDef="let row"> {{row.Total}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </mat-card-content>
+        <mat-card-header>
+            <mat-card-subtitle>訂單金額: {{ELEMENT_DATA.Total}}</mat-card-subtitle>
+            <mat-card-subtitle>訂單成本: {{ELEMENT_DATA.Cost}}</mat-card-subtitle>
+            <mat-card-subtitle>訂單利潤: {{ELEMENT_DATA.Total - ELEMENT_DATA.Cost}}</mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>
+</div>

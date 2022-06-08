@@ -1,0 +1,13 @@
+<div class="container-fluid d-flex align-items-center justify-content-center">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>{{ELEMENT_DATA.Name}}</mat-card-title>
+            <mat-card-subtitle>商品價格: {{ELEMENT_DATA.Price}}</mat-card-subtitle>
+            <mat-card-subtitle>商品成本: {{ELEMENT_DATA.Cost}}</mat-card-subtitle>
+            <mat-card-subtitle>上架時間: {{ELEMENT_DATA.CreateTime | date: 'medium'}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{ELEMENT_DATA.Description}}</p>
+        </mat-card-content>
+    </mat-card>
+</div>
